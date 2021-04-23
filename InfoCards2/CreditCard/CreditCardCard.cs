@@ -32,7 +32,15 @@ namespace Assignment.CreditCard
 
         public bool EditData()
         {
-            throw new NotImplementedException();
+            NewCreditCardCard newCreditCardCard = new NewCreditCardCard();
+            if(newCreditCardCard.ShowDialog() == DialogResult.OK)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string GetDataAsString()

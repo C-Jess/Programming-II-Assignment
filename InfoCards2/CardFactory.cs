@@ -25,7 +25,7 @@ namespace Assignment
 
         public IInfoCard CreateNewInfoCard(string category)
         {
-            throw new NotImplementedException();
+            return new CreditCard.CreditCardCard();
         }
 
         public string GetDescription(string category)
