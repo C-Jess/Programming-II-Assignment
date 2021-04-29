@@ -10,7 +10,25 @@ namespace Assignment.CreditCard
     class CreditCardCard : IInfoCard
     {
         string _category = "Credit Card";
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        string _name;
+        int cardNumber;
+        int monthStartDate;
+        int yearStartDate;
+        int monthExpiryDate;
+        int yearExpiryDate;
+        string nameOnCard;
+        int CVC;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
 
         public string Category
         {
@@ -35,6 +53,14 @@ namespace Assignment.CreditCard
             NewCreditCardCard newCreditCardCard = new NewCreditCardCard();
             if(newCreditCardCard.ShowDialog() == DialogResult.OK)
             {
+                _name = newCreditCardCard.Name;
+                cardNumber = newCreditCardCard.CardNumber;
+                monthStartDate = newCreditCardCard.MonthStartDate;
+                yearStartDate = newCreditCardCard.YearStartDate;
+                monthExpiryDate = newCreditCardCard.MonthExpiryDate;
+                yearExpiryDate = newCreditCardCard.YearExpiryDate;
+                nameOnCard = newCreditCardCard.NameOnCard;
+                CVC = newCreditCardCard.CVC;
                 return true;
             }
             else
