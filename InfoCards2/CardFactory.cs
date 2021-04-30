@@ -20,7 +20,8 @@ namespace Assignment
 
         public IInfoCard CreateInfoCard(string initialDetails)
         {
-            throw new NotImplementedException();
+            string[] details = initialDetails.Split('|');
+            return new CreditCard.CreditCardCard(details[1], details[2], details[3], details[4], details[5], details[6], details[7], details[8]);
         }
 
         public IInfoCard CreateNewInfoCard(string category)

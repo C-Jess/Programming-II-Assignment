@@ -12,102 +12,20 @@ namespace Assignment.CreditCard
 {
     public partial class NewCreditCardCard : Form
     {
-        string _name;
-        int _cardNumber;
-        int _monthStartDate;
-        int _yearStartDate;
-        int _monthExpiryDate;
-        int _yearExpiryDate;
-        string _nameOnCard;
-        int _CVC;
-        public string Name
+        CreditCardCard _creditCard;
+        public CreditCardCard CreditCard
         {
             get
             {
-                return _name;
+                return _creditCard;
             }
             set
             {
-                _name = value;
+                _creditCard = value;
             }
         }
-        public int CardNumber
-        {
-            get
-            {
-                return _cardNumber;
-            }
-            set
-            {
-                _cardNumber = value;
-            }
-        }
-        public int MonthStartDate
-        {
-            get
-            {
-                return _monthStartDate;
-            }
-            set
-            {
-                _monthStartDate = value;
-            }
-        }
-        public int YearStartDate
-        {
-            get
-            {
-                return _yearStartDate;
-            }
-            set
-            {
-                _yearStartDate = value;
-            }
-        }
-        public int MonthExpiryDate
-        {
-            get
-            {
-                return _monthExpiryDate;
-            }
-            set
-            {
-                _monthExpiryDate = value;
-            }
-        }
-        public int YearExpiryDate
-        {
-            get
-            {
-                return _yearExpiryDate;
-            }
-            set
-            {
-                _yearExpiryDate = value;
-            }
-        }
-        public string NameOnCard
-        {
-            get
-            {
-                return _nameOnCard;
-            }
-            set
-            {
-                _nameOnCard = value;
-            }
-        }
-        public int CVC
-        {
-            get
-            {
-                return _CVC;
-            }
-            set
-            {
-                _CVC = value;
-            }
-        }
+
+
         public NewCreditCardCard()
         {
             InitializeComponent();
@@ -116,36 +34,50 @@ namespace Assignment.CreditCard
         private void saveButton_Click(object sender, EventArgs e)
         {
             bool validationFailed = false;
-            _name = nameTextBox.Text;
-            _nameOnCard = nameOnCardTextBox.Text;
+            int cardNumber;
+            int monthStartDate;
+            int yearStartDate;
+            int monthExpiryDate;
+            int yearExpiryDate;
+            int CVC;
+            string name = nameTextBox.Text;
+            string nameOnCard = nameOnCardTextBox.Text;
 
-            if (!int.TryParse(cardNumberTextBox.Text, out _cardNumber))
+            if (!int.TryParse(cardNumberTextBox.Text, out cardNumber))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(startMonthTextBox.Text, out _monthStartDate))
+            if (!int.TryParse(startMonthTextBox.Text, out monthStartDate))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(startYearTextBox.Text, out _yearStartDate))
+            if (!int.TryParse(startYearTextBox.Text, out yearStartDate))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(expiryMonthTextBox.Text, out _monthExpiryDate))
+            if (!int.TryParse(expiryMonthTextBox.Text, out monthExpiryDate))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(expiryYearTextBox.Text, out _yearExpiryDate))
+            if (!int.TryParse(expiryYearTextBox.Text, out yearExpiryDate))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(CVCTextBox.Text, out _CVC))
+            if (!int.TryParse(CVCTextBox.Text, out CVC))
             {
                 validationFailed = true;
             }
 
             if (!validationFailed)
             {
+                _creditCard.Name = name;
+                _creditCard.CardNumber = cardNumber;
+                _creditCard.MonthStartDate = monthStartDate;
+                _creditCard.YearStartDate = yearStartDate;
+                _creditCard.MonthExpiryDate = monthExpiryDate;
+                _creditCard.YearExpiryDate = yearExpiryDate;
+                _creditCard.NameOnCard = nameOnCard;
+                _creditCard.CVC = CVC;
                 DialogResult = DialogResult.OK;
             }
         }
@@ -153,6 +85,21 @@ namespace Assignment.CreditCard
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void NewCreditCardCard_Load(object sender, EventArgs e)
+        {
+            if (CreditCard.Name != null)
+            {
+                nameTextBox.Text = CreditCard.Name;
+                cardNumberTextBox.Text = CreditCard.CardNumber.ToString();
+                startMonthTextBox.Text = CreditCard.MonthStartDate.ToString();
+                startYearTextBox.Text = CreditCard.YearStartDate.ToString();
+                expiryMonthTextBox.Text = CreditCard.MonthExpiryDate.ToString();
+                expiryYearTextBox.Text = CreditCard.YearExpiryDate.ToString();
+                nameOnCardTextBox.Text = CreditCard.NameOnCard;
+                CVCTextBox.Text = CreditCard.CVC.ToString();
+            }
         }
     }
 }

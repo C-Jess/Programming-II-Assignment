@@ -181,7 +181,7 @@ namespace Assignment.CreditCard
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(75, 181);
+            this.saveButton.Location = new System.Drawing.Point(88, 181);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 14;
@@ -191,7 +191,7 @@ namespace Assignment.CreditCard
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(210, 181);
+            this.cancelButton.Location = new System.Drawing.Point(223, 181);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 15;
@@ -224,6 +224,7 @@ namespace Assignment.CreditCard
             this.Controls.Add(this.nameLabel);
             this.Name = "NewCreditCardCard";
             this.Text = "Edit Credit Card Details";
+            this.Load += new System.EventHandler(this.NewCreditCardCard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
