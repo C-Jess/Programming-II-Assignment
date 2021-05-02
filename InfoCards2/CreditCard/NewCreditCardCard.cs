@@ -22,6 +22,16 @@ namespace Assignment.CreditCard
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            // Reset textbox colours.
+            startMonthTextBox.BackColor = Color.White;
+            startYearTextBox.BackColor = Color.White;
+            expiryMonthTextBox.BackColor = Color.White;
+            expiryYearTextBox.BackColor = Color.White;
+            nameTextBox.BackColor = Color.White;
+            nameOnCardTextBox.BackColor = Color.White;
+            cardNumberTextBox.BackColor = Color.White;
+            CVCTextBox.BackColor = Color.White;
+
             bool validationFailed = false;
 
             string name = nameTextBox.Text;
@@ -29,20 +39,47 @@ namespace Assignment.CreditCard
             string cardNumber = cardNumberTextBox.Text;
             string cvc = CVCTextBox.Text;
 
+            // Clean Strings.
+            if (!CheckInput(name))
+            {
+                nameTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(nameOnCard))
+            {
+                nameOnCardTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(cardNumber))
+            {
+                cardNumberTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(cvc))
+            {
+                CVCTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+
+            // Clean integers.
             if (!int.TryParse(startMonthTextBox.Text, out int monthStartDate))
             {
+                startMonthTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
             if (!int.TryParse(startYearTextBox.Text, out int yearStartDate))
             {
+                startYearTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
             if (!int.TryParse(expiryMonthTextBox.Text, out int monthExpiryDate))
             {
+                expiryMonthTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
             if (!int.TryParse(expiryYearTextBox.Text, out int yearExpiryDate))
             {
+                expiryYearTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
 
