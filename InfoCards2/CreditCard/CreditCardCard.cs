@@ -9,123 +9,41 @@ namespace Assignment.CreditCard
 {
     public class CreditCardCard : IInfoCard
     {
-        string _name;
-        int _cardNumber;
-        int _monthStartDate;
-        int _yearStartDate;
-        int _monthExpiryDate;
-        int _yearExpiryDate;
-        string _nameOnCard;
-        int _CVC;
-
         public CreditCardCard(){}
-        public CreditCardCard(string name,  string cardNumber, string monthStartDate, string yearStartDate, string monthExpiryDate, string yearExpiryDate, string nameOnCard, string CVC)
+        public CreditCardCard(string name,  string cardNumber, string monthStartDate, string yearStartDate, string monthExpiryDate, string yearExpiryDate, string nameOnCard, string cvc)
         {
-            _name = name;
-            _nameOnCard = nameOnCard;
-            int.TryParse(cardNumber, out _cardNumber);
-            int.TryParse(monthStartDate, out _monthStartDate);
-            int.TryParse(yearStartDate, out _yearStartDate);
-            int.TryParse(monthExpiryDate, out _monthExpiryDate);
-            int.TryParse(yearExpiryDate, out _yearExpiryDate);
-            int.TryParse(CVC, out _CVC);
+            Name = name;
+            NameOnCard = nameOnCard;
+            CardNumber = cardNumber;
+            CVC = cvc;
+            if(int.TryParse(monthStartDate, out int monthStart))
+            {
+                MonthStartDate = monthStart;
+            }
+            if(int.TryParse(yearStartDate, out int yearStart))
+            {
+                YearStartDate = yearStart;
+            }
+            if(int.TryParse(monthExpiryDate, out int monthExpiry))
+            {
+                MonthExpiryDate = monthExpiry;
+            }
+            if(int.TryParse(yearExpiryDate, out int yearExpiry))
+            {
+                YearExpiryDate = yearExpiry;
+            }
         }
 
-        public string Category
-        {
-            get
-            {
-                return "Credit Card";
-            }
-        }
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
-        public int CardNumber
-        {
-            get
-            {
-                return _cardNumber;
-            }
-            set
-            {
-                _cardNumber = value;
-            }
-        }
-        public int MonthStartDate
-        {
-            get
-            {
-                return _monthStartDate;
-            }
-            set
-            {
-                _monthStartDate = value;
-            }
-        }
-        public int YearStartDate
-        {
-            get
-            {
-                return _yearStartDate;
-            }
-            set
-            {
-                _yearStartDate = value;
-            }
-        }
-        public int MonthExpiryDate
-        {
-            get
-            {
-                return _monthExpiryDate;
-            }
-            set
-            {
-                _monthExpiryDate = value;
-            }
-        }
-        public int YearExpiryDate
-        {
-            get
-            {
-                return _yearExpiryDate;
-            }
-            set
-            {
-                _yearExpiryDate = value;
-            }
-        }
-        public string NameOnCard
-        {
-            get
-            {
-                return _nameOnCard;
-            }
-            set
-            {
-                _nameOnCard = value;
-            }
-        }
-        public int CVC
-        {
-            get
-            {
-                return _CVC;
-            }
-            set
-            {
-                _CVC = value;
-            }
-        }
+        public string Category { get; } = "Credit Card";
+        public string Name { get; set; }
+        public string CardNumber { get; set; }
+        public int MonthStartDate { get; set; }
+        public int YearStartDate { get; set; }
+        public int MonthExpiryDate { get; set; }
+        public int YearExpiryDate { get; set; }
+        public string NameOnCard { get; set; }
+        public string CVC{ get; set; }
+
         public void CloseDisplay()
         {
             Form form = Application.OpenForms["DisplayCreditCard"];
@@ -140,6 +58,8 @@ namespace Assignment.CreditCard
             DisplayCreditCard displayCreditCard = new DisplayCreditCard(this);
             displayCreditCard.TopLevel = false;
             displayCreditCard.TopMost = true;
+            displayCreditCard.FormBorderStyle = FormBorderStyle.None;
+            displayCreditCard.WindowState = FormWindowState.Maximized;
             displayPanel.Controls.Add(displayCreditCard);
             displayCreditCard.Show();
         }
@@ -150,14 +70,14 @@ namespace Assignment.CreditCard
             newCreditCardCard.CreditCard = this;
             if(newCreditCardCard.ShowDialog() == DialogResult.OK)
             {
-                _name = newCreditCardCard.CreditCard.Name;
-                _cardNumber = newCreditCardCard.CreditCard.CardNumber;
-                _monthStartDate = newCreditCardCard.CreditCard.MonthStartDate;
-                _yearStartDate = newCreditCardCard.CreditCard.YearStartDate;
-                _monthExpiryDate = newCreditCardCard.CreditCard.MonthExpiryDate;
-                _yearExpiryDate = newCreditCardCard.CreditCard.YearExpiryDate;
-                _nameOnCard = newCreditCardCard.CreditCard.NameOnCard;
-                _CVC = newCreditCardCard.CreditCard.CVC;
+                Name = newCreditCardCard.CreditCard.Name;
+                CardNumber = newCreditCardCard.CreditCard.CardNumber;
+                MonthStartDate = newCreditCardCard.CreditCard.MonthStartDate;
+                YearStartDate = newCreditCardCard.CreditCard.YearStartDate;
+                MonthExpiryDate = newCreditCardCard.CreditCard.MonthExpiryDate;
+                YearExpiryDate = newCreditCardCard.CreditCard.YearExpiryDate;
+                NameOnCard = newCreditCardCard.CreditCard.NameOnCard;
+                CVC = newCreditCardCard.CreditCard.CVC;
                 newCreditCardCard.Dispose();
                 return true;
             }

@@ -8,15 +8,9 @@ namespace Assignment
 {
     class CardFactory : IInfoCardFactory
     {
-        Dictionary<string, string> descriptions = new Dictionary<string, string>{ {"Credit Card","Store credit card details"} };
-        string[] _categoriesSupported = {"Credit Card"};
-        public string[] CategoriesSupported
-        {
-            get
-            {
-                return _categoriesSupported;
-            }
-        }
+        private readonly Dictionary<string, string> descriptions = new Dictionary<string, string> { { "Credit Card", "Store credit card details" } };
+
+        public string[] CategoriesSupported { get; } = { "Credit Card" };
 
         public IInfoCard CreateInfoCard(string initialDetails)
         {

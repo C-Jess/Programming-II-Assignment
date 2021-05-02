@@ -12,7 +12,7 @@ namespace Assignment.CreditCard
 {
     public partial class DisplayCreditCard : Form
     {
-        CreditCardCard creditCard;
+        private CreditCardCard creditCard;
         public DisplayCreditCard(CreditCardCard creditCardCard)
         {
             creditCard = creditCardCard;

@@ -12,18 +12,7 @@ namespace Assignment.CreditCard
 {
     public partial class NewCreditCardCard : Form
     {
-        CreditCardCard _creditCard;
-        public CreditCardCard CreditCard
-        {
-            get
-            {
-                return _creditCard;
-            }
-            set
-            {
-                _creditCard = value;
-            }
-        }
+        public CreditCardCard CreditCard { get; set; }
 
 
         public NewCreditCardCard()
@@ -34,50 +23,39 @@ namespace Assignment.CreditCard
         private void saveButton_Click(object sender, EventArgs e)
         {
             bool validationFailed = false;
-            int cardNumber;
-            int monthStartDate;
-            int yearStartDate;
-            int monthExpiryDate;
-            int yearExpiryDate;
-            int CVC;
+
             string name = nameTextBox.Text;
             string nameOnCard = nameOnCardTextBox.Text;
+            string cardNumber = cardNumberTextBox.Text;
+            string cvc = CVCTextBox.Text;
 
-            if (!int.TryParse(cardNumberTextBox.Text, out cardNumber))
+            if (!int.TryParse(startMonthTextBox.Text, out int monthStartDate))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(startMonthTextBox.Text, out monthStartDate))
+            if (!int.TryParse(startYearTextBox.Text, out int yearStartDate))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(startYearTextBox.Text, out yearStartDate))
+            if (!int.TryParse(expiryMonthTextBox.Text, out int monthExpiryDate))
             {
                 validationFailed = true;
             }
-            if (!int.TryParse(expiryMonthTextBox.Text, out monthExpiryDate))
-            {
-                validationFailed = true;
-            }
-            if (!int.TryParse(expiryYearTextBox.Text, out yearExpiryDate))
-            {
-                validationFailed = true;
-            }
-            if (!int.TryParse(CVCTextBox.Text, out CVC))
+            if (!int.TryParse(expiryYearTextBox.Text, out int yearExpiryDate))
             {
                 validationFailed = true;
             }
 
             if (!validationFailed)
             {
-                _creditCard.Name = name;
-                _creditCard.CardNumber = cardNumber;
-                _creditCard.MonthStartDate = monthStartDate;
-                _creditCard.YearStartDate = yearStartDate;
-                _creditCard.MonthExpiryDate = monthExpiryDate;
-                _creditCard.YearExpiryDate = yearExpiryDate;
-                _creditCard.NameOnCard = nameOnCard;
-                _creditCard.CVC = CVC;
+                CreditCard.Name = name;
+                CreditCard.CardNumber = cardNumber;
+                CreditCard.MonthStartDate = monthStartDate;
+                CreditCard.YearStartDate = yearStartDate;
+                CreditCard.MonthExpiryDate = monthExpiryDate;
+                CreditCard.YearExpiryDate = yearExpiryDate;
+                CreditCard.NameOnCard = nameOnCard;
+                CreditCard.CVC = cvc;
                 DialogResult = DialogResult.OK;
             }
         }
@@ -91,14 +69,30 @@ namespace Assignment.CreditCard
         {
             if (CreditCard.Name != null)
             {
-                nameTextBox.Text = CreditCard.Name;
+                nameTextBox.Text = CreditCard.Name.ToString();
                 cardNumberTextBox.Text = CreditCard.CardNumber.ToString();
                 startMonthTextBox.Text = CreditCard.MonthStartDate.ToString();
                 startYearTextBox.Text = CreditCard.YearStartDate.ToString();
                 expiryMonthTextBox.Text = CreditCard.MonthExpiryDate.ToString();
                 expiryYearTextBox.Text = CreditCard.YearExpiryDate.ToString();
-                nameOnCardTextBox.Text = CreditCard.NameOnCard;
+                nameOnCardTextBox.Text = CreditCard.NameOnCard.ToString();
                 CVCTextBox.Text = CreditCard.CVC.ToString();
+            }
+        }
+
+        private bool CheckInput(string input)
+        {
+            if (input == "")
+            {
+                return false;
+            }
+            else if (input.Contains("|"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
