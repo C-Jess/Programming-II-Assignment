@@ -36,7 +36,7 @@ namespace Assignment.CreditCard
 
             string name = nameTextBox.Text;
             string nameOnCard = nameOnCardTextBox.Text;
-            string cardNumber = cardNumberTextBox.Text;
+            string cardNumber = cardNumberTextBox.Text.Replace(" ","");
             string cvc = CVCTextBox.Text;
 
             // Clean Strings.
@@ -50,12 +50,12 @@ namespace Assignment.CreditCard
                 nameOnCardTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
-            if (!CheckInput(cardNumber))
+            if (!CheckInput(cardNumber) || !double.TryParse(cardNumber, out _) || cardNumber.Length != 16)
             {
                 cardNumberTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
-            if (!CheckInput(cvc))
+            if (!CheckInput(cvc) || !int.TryParse(cvc,out _) || cvc.Length != 3)
             {
                 CVCTextBox.BackColor = Color.Red;
                 validationFailed = true;
