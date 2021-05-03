@@ -21,13 +21,13 @@ namespace Assignment.CreditCard
 
         private void DisplayCreditCard_Load(object sender, EventArgs e)
         {
-            nameLabel.Text = creditCard.Name;
+            nameLabel.Text = creditCard.Name.ToString();
             cardNumberLabel.Text = creditCard.CardNumber.ToString();
-            monthStartLabel.Text = creditCard.MonthStartDate.ToString();
-            yearStartLabel.Text = creditCard.YearStartDate.ToString();
-            monthExpiryLabel.Text = creditCard.MonthExpiryDate.ToString();
-            yearExpiryLabel.Text = creditCard.YearExpiryDate.ToString();
-            nameOnCardLabel.Text = creditCard.NameOnCard;
+            monthStartLabel.Text = creditCard.StartDate.Month.ToString();
+            yearStartLabel.Text = creditCard.StartDate.Year.ToString();
+            monthExpiryLabel.Text = creditCard.ExpiryDate.Month.ToString();
+            yearExpiryLabel.Text = creditCard.ExpiryDate.Year.ToString();
+            nameOnCardLabel.Text = creditCard.NameOnCard.ToString();
             CVCLabel.Text = creditCard.CVC.ToString();
         }
     }

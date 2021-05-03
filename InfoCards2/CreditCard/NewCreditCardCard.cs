@@ -33,6 +33,7 @@ namespace Assignment.CreditCard
             CVCTextBox.BackColor = Color.White;
 
             bool validationFailed = false;
+            bool dateValidationFailed = false;
 
             string name = nameTextBox.Text;
             string nameOnCard = nameOnCardTextBox.Text;
@@ -83,14 +84,48 @@ namespace Assignment.CreditCard
                 validationFailed = true;
             }
 
+            // Checking valid date.
+            try
+            {
+                DateTime startDate = new DateTime(yearStartDate, monthStartDate, 1);
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                startMonthTextBox.BackColor = Color.Red;
+                startYearTextBox.BackColor = Color.Red;
+                validationFailed = true;
+                dateValidationFailed = true;
+            }
+            try
+            {
+                DateTime expiryDate = new DateTime(yearExpiryDate, monthExpiryDate, 1);
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                expiryMonthTextBox.BackColor = Color.Red;
+                expiryYearTextBox.BackColor = Color.Red;
+                validationFailed = true;
+                dateValidationFailed = true;
+            }
+
+            if (!dateValidationFailed)
+            {
+                DateTime startDate = new DateTime(yearStartDate, monthStartDate, 1);
+                DateTime expiryDate = new DateTime(yearExpiryDate, monthExpiryDate, 1);
+                if (startDate > expiryDate)
+                {
+                    startMonthTextBox.BackColor = Color.Red;
+                    startYearTextBox.BackColor = Color.Red;
+                    validationFailed = true;
+                }
+            }
+
             if (!validationFailed)
             {
                 CreditCard.Name = name;
                 CreditCard.CardNumber = cardNumber;
-                CreditCard.MonthStartDate = monthStartDate;
-                CreditCard.YearStartDate = yearStartDate;
-                CreditCard.MonthExpiryDate = monthExpiryDate;
-                CreditCard.YearExpiryDate = yearExpiryDate;
+                CreditCard.StartDate = new DateTime(yearStartDate,monthStartDate,1);
+                CreditCard.ExpiryDate = new DateTime(yearExpiryDate, monthExpiryDate, 1);
                 CreditCard.NameOnCard = nameOnCard;
                 CreditCard.CVC = cvc;
                 DialogResult = DialogResult.OK;
@@ -108,10 +143,10 @@ namespace Assignment.CreditCard
             {
                 nameTextBox.Text = CreditCard.Name.ToString();
                 cardNumberTextBox.Text = CreditCard.CardNumber.ToString();
-                startMonthTextBox.Text = CreditCard.MonthStartDate.ToString();
-                startYearTextBox.Text = CreditCard.YearStartDate.ToString();
-                expiryMonthTextBox.Text = CreditCard.MonthExpiryDate.ToString();
-                expiryYearTextBox.Text = CreditCard.YearExpiryDate.ToString();
+                startMonthTextBox.Text = CreditCard.StartDate.Month.ToString();
+                startYearTextBox.Text = CreditCard.StartDate.Year.ToString();
+                expiryMonthTextBox.Text = CreditCard.ExpiryDate.Month.ToString();
+                expiryYearTextBox.Text = CreditCard.ExpiryDate.Year.ToString();
                 nameOnCardTextBox.Text = CreditCard.NameOnCard.ToString();
                 CVCTextBox.Text = CreditCard.CVC.ToString();
             }

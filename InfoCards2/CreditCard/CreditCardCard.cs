@@ -18,29 +18,25 @@ namespace Assignment.CreditCard
             CVC = cvc;
             if(int.TryParse(monthStartDate, out int monthStart))
             {
-                MonthStartDate = monthStart;
-            }
-            if(int.TryParse(yearStartDate, out int yearStart))
-            {
-                YearStartDate = yearStart;
+                if (int.TryParse(yearStartDate, out int yearStart))
+                {
+                    StartDate = new DateTime(yearStart, monthStart, 1);
+                }
             }
             if(int.TryParse(monthExpiryDate, out int monthExpiry))
             {
-                MonthExpiryDate = monthExpiry;
-            }
-            if(int.TryParse(yearExpiryDate, out int yearExpiry))
-            {
-                YearExpiryDate = yearExpiry;
+                if (int.TryParse(yearExpiryDate, out int yearExpiry))
+                {
+                    ExpiryDate = new DateTime(yearExpiry, monthExpiry, 1);
+                }
             }
         }
 
         public string Category { get; } = "Credit Card";
         public string Name { get; set; }
         public string CardNumber { get; set; }
-        public int MonthStartDate { get; set; }
-        public int YearStartDate { get; set; }
-        public int MonthExpiryDate { get; set; }
-        public int YearExpiryDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime ExpiryDate { get; set; }
         public string NameOnCard { get; set; }
         public string CVC{ get; set; }
 
@@ -72,10 +68,8 @@ namespace Assignment.CreditCard
             {
                 Name = newCreditCardCard.CreditCard.Name;
                 CardNumber = newCreditCardCard.CreditCard.CardNumber;
-                MonthStartDate = newCreditCardCard.CreditCard.MonthStartDate;
-                YearStartDate = newCreditCardCard.CreditCard.YearStartDate;
-                MonthExpiryDate = newCreditCardCard.CreditCard.MonthExpiryDate;
-                YearExpiryDate = newCreditCardCard.CreditCard.YearExpiryDate;
+                StartDate = newCreditCardCard.CreditCard.StartDate;
+                ExpiryDate = newCreditCardCard.CreditCard.ExpiryDate;
                 NameOnCard = newCreditCardCard.CreditCard.NameOnCard;
                 CVC = newCreditCardCard.CreditCard.CVC;
                 newCreditCardCard.Dispose();
@@ -90,7 +84,7 @@ namespace Assignment.CreditCard
 
         public string GetDataAsString()
         {
-            string combinedData = Category + "|" + Name + "|" + CardNumber + "|" + MonthStartDate + "|" + YearStartDate + "|" + MonthExpiryDate + "|" + YearExpiryDate + "|" + NameOnCard + "|" + CVC;
+            string combinedData = Category + "|" + Name + "|" + CardNumber + "|" + StartDate.Month.ToString() + "|" + StartDate.Year.ToString() + "|" + ExpiryDate.Month.ToString() + "|" + ExpiryDate.Year.ToString() + "|" + NameOnCard + "|" + CVC;
             return combinedData;
         }
     }
