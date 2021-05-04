@@ -13,8 +13,6 @@ namespace Assignment.CreditCard
     public partial class NewCreditCardCard : Form
     {
         public CreditCardCard CreditCard { get; set; }
-
-
         public NewCreditCardCard()
         {
             InitializeComponent();

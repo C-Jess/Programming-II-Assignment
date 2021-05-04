@@ -70,6 +70,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankAccount\BankAccountCard.cs" />
+    <Compile Include="BankAccount\DisplayBankAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankAccount\DisplayBankAccount.Designer.cs">
+      <DependentUpon>DisplayBankAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BankAccount\NewBankAccountCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankAccount\NewBankAccountCard.Designer.cs">
+      <DependentUpon>NewBankAccountCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CardFactory.cs" />
     <Compile Include="CreditCard\CreditCardCard.cs" />
     <Compile Include="CreditCard\DisplayCreditCard.cs">
@@ -100,6 +113,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BankAccount\DisplayBankAccount.resx">
+      <DependentUpon>DisplayBankAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankAccount\NewBankAccountCard.resx">
+      <DependentUpon>NewBankAccountCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreditCard\DisplayCreditCard.resx">
       <DependentUpon>DisplayCreditCard.cs</DependentUpon>
     </EmbeddedResource>
