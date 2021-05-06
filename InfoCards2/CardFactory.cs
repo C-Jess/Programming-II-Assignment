@@ -8,9 +8,9 @@ namespace Assignment
 {
     class CardFactory : IInfoCardFactory
     {
-        private readonly Dictionary<string, string> descriptions = new Dictionary<string, string> { { "Credit Card", "Store credit card details" }, {"Bank Account", "Store bank account details" } };
+        private readonly Dictionary<string, string> descriptions = new Dictionary<string, string> { { "Credit Card", "Store credit card details" }, {"Bank Account", "Store bank account details" }, {"Photo ID","Store ID details with photo"} };
 
-        public string[] CategoriesSupported { get; } = { "Credit Card", "Bank Account" };
+        public string[] CategoriesSupported { get; } = { "Credit Card", "Bank Account", "Photo ID" };
 
         public IInfoCard CreateInfoCard(string initialDetails)
         {
@@ -34,6 +34,8 @@ namespace Assignment
                     return new CreditCard.CreditCardCard();
                 case "Bank Account":
                     return new BankAccount.BankAccountCard();
+                case "Photo ID":
+                    return new PhotoID.PhotoIDCard();
                 default:
                     return null;
             }
