@@ -142,10 +142,15 @@ namespace Assignment.PhotoID
             // 
             // dobDateTimePicker
             // 
+            this.dobDateTimePicker.Checked = false;
+            this.dobDateTimePicker.CustomFormat = "";
             this.dobDateTimePicker.Location = new System.Drawing.Point(338, 132);
+            this.dobDateTimePicker.MaxDate = new System.DateTime(2021, 5, 7, 0, 0, 0, 0);
+            this.dobDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dobDateTimePicker.Name = "dobDateTimePicker";
             this.dobDateTimePicker.Size = new System.Drawing.Size(134, 20);
             this.dobDateTimePicker.TabIndex = 12;
+            this.dobDateTimePicker.Value = new System.DateTime(2021, 5, 7, 0, 0, 0, 0);
             // 
             // titleComboBox
             // 
