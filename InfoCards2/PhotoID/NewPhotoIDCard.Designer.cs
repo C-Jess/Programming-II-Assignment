@@ -116,28 +116,28 @@ namespace Assignment.PhotoID
             this.nameTextBox.Location = new System.Drawing.Point(338, 13);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(160, 20);
-            this.nameTextBox.TabIndex = 7;
+            this.nameTextBox.TabIndex = 1;
             // 
             // surnameTextBox
             // 
             this.surnameTextBox.Location = new System.Drawing.Point(338, 71);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(160, 20);
-            this.surnameTextBox.TabIndex = 9;
+            this.surnameTextBox.TabIndex = 3;
             // 
             // givenNamesTextBox
             // 
             this.givenNamesTextBox.Location = new System.Drawing.Point(338, 100);
             this.givenNamesTextBox.Name = "givenNamesTextBox";
             this.givenNamesTextBox.Size = new System.Drawing.Size(160, 20);
-            this.givenNamesTextBox.TabIndex = 10;
+            this.givenNamesTextBox.TabIndex = 4;
             // 
             // addressRichTextBox
             // 
             this.addressRichTextBox.Location = new System.Drawing.Point(338, 158);
             this.addressRichTextBox.Name = "addressRichTextBox";
             this.addressRichTextBox.Size = new System.Drawing.Size(160, 79);
-            this.addressRichTextBox.TabIndex = 11;
+            this.addressRichTextBox.TabIndex = 6;
             this.addressRichTextBox.Text = "";
             // 
             // dobDateTimePicker
@@ -149,7 +149,7 @@ namespace Assignment.PhotoID
             this.dobDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dobDateTimePicker.Name = "dobDateTimePicker";
             this.dobDateTimePicker.Size = new System.Drawing.Size(134, 20);
-            this.dobDateTimePicker.TabIndex = 12;
+            this.dobDateTimePicker.TabIndex = 5;
             this.dobDateTimePicker.Value = new System.DateTime(2021, 5, 7, 0, 0, 0, 0);
             // 
             // titleComboBox
@@ -164,14 +164,14 @@ namespace Assignment.PhotoID
             this.titleComboBox.Location = new System.Drawing.Point(338, 42);
             this.titleComboBox.Name = "titleComboBox";
             this.titleComboBox.Size = new System.Drawing.Size(68, 21);
-            this.titleComboBox.TabIndex = 13;
+            this.titleComboBox.TabIndex = 2;
             // 
             // uploadPhotoButton
             // 
             this.uploadPhotoButton.Location = new System.Drawing.Point(13, 207);
             this.uploadPhotoButton.Name = "uploadPhotoButton";
             this.uploadPhotoButton.Size = new System.Drawing.Size(215, 23);
-            this.uploadPhotoButton.TabIndex = 0;
+            this.uploadPhotoButton.TabIndex = 7;
             this.uploadPhotoButton.Text = "Upload Photo";
             this.uploadPhotoButton.UseVisualStyleBackColor = true;
             this.uploadPhotoButton.Click += new System.EventHandler(this.uploadPhotoButton_Click);
@@ -181,7 +181,7 @@ namespace Assignment.PhotoID
             this.saveButton.Location = new System.Drawing.Point(132, 255);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(89, 32);
-            this.saveButton.TabIndex = 14;
+            this.saveButton.TabIndex = 8;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -191,7 +191,7 @@ namespace Assignment.PhotoID
             this.cancelButton.Location = new System.Drawing.Point(313, 255);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 32);
-            this.cancelButton.TabIndex = 15;
+            this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
