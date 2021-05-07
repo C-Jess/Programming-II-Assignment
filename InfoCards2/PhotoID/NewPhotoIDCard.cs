@@ -66,7 +66,16 @@ namespace Assignment.PhotoID
 
         private void NewPhotoIDCard_Load(object sender, EventArgs e)
         {
-
+            if(PhotoID.Name != null)
+            {
+                nameTextBox.Text = PhotoID.Name;
+                titleComboBox.Text = PhotoID.Title;
+                surnameTextBox.Text = PhotoID.Surname;
+                givenNamesTextBox.Text = PhotoID.GivenNames;
+                dobDateTimePicker.Value = PhotoID.DOB;
+                addressRichTextBox.Text = PhotoID.Address;
+                photoPictureBox.Image = PhotoID.Photo;
+            }
         }
     }
 }

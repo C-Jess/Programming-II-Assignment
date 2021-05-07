@@ -97,6 +97,12 @@
     <Compile Include="CreditCard\NewCreditCardCard.Designer.cs">
       <DependentUpon>NewCreditCardCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="PhotoID\DisplayPhotoID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhotoID\DisplayPhotoID.Designer.cs">
+      <DependentUpon>DisplayPhotoID.cs</DependentUpon>
+    </Compile>
     <Compile Include="PhotoID\NewPhotoIDCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreditCard\NewCreditCardCard.resx">
       <DependentUpon>NewCreditCardCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhotoID\DisplayPhotoID.resx">
+      <DependentUpon>DisplayPhotoID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhotoID\NewPhotoIDCard.resx">
       <DependentUpon>NewPhotoIDCard.cs</DependentUpon>

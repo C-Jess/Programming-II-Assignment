@@ -21,6 +21,8 @@ namespace Assignment
                     return new CreditCard.CreditCardCard(details[1], details[2], details[3], details[4], details[5], details[6], details[7], details[8]);
                 case "Bank Account":
                     return new BankAccount.BankAccountCard(details[1], details[2], details[3], details[4], details[5]);
+                case "Photo ID":
+                    return new PhotoID.PhotoIDCard(details[1], details[2], details[3], details[4], details[5], details[6], details[7], details[8], details[9]);
                 default:
                     return null;
             }
