@@ -8,12 +8,21 @@ namespace Assignment
 {
     class CardFactory : IInfoCardFactory
     {
+        // Dictionary to store descriptions for each category.
         private readonly Dictionary<string, string> descriptions = new Dictionary<string, string> { { "Credit Card", "Store credit card details" }, {"Bank Account", "Store bank account details" }, {"Photo ID","Store ID details with photo"} };
 
         public string[] CategoriesSupported { get; } = { "Credit Card", "Bank Account", "Photo ID" };
 
+        /// <summary>
+        /// Creates a card from the initial details.
+        /// </summary>
+        /// <param name="initialDetails">Initial detail of the card.</param>
+        /// <returns>
+        /// The respective info card with the initail details.
+        /// </returns>
         public IInfoCard CreateInfoCard(string initialDetails)
         {
+            // Split the string into seperate details.
             string[] details = initialDetails.Split('|');
             switch (details[0])
             {
@@ -28,6 +37,13 @@ namespace Assignment
             }
         }
 
+        /// <summary>
+        /// Creates a new card from the given cetegory.
+        /// </summary>
+        /// <param name="category">Category of the card.</param>
+        /// <returns>
+        /// A new info card of the given category.
+        /// </returns>
         public IInfoCard CreateNewInfoCard(string category)
         {
             switch (category)
@@ -43,6 +59,13 @@ namespace Assignment
             }
         }
 
+        /// <summary>
+        /// Gets the description of a given category.
+        /// </summary>
+        /// <param name="category">Category of the card.</param>
+        /// <returns>
+        /// The description of the category.
+        /// </returns>
         public string GetDescription(string category)
         {
             return descriptions[category];

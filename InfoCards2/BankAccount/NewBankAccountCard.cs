@@ -12,14 +12,21 @@ namespace Assignment.BankAccount
 {
     public partial class NewBankAccountCard : Form
     {
+        /// <summary>
+        /// Bank account info card to store details from form.
+        /// </summary>
         public BankAccountCard BankAccount { get; set; }
         public NewBankAccountCard()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Validate and save details inputted in form.
+        /// </summary>
         private void saveButton_Click(object sender, EventArgs e)
         {
+            // Reset textbox colours.
             overdraftTextBox.BackColor = Color.White;
             nameTextBox.BackColor = Color.White;
             sortCodeTextBox.BackColor = Color.White;
@@ -29,26 +36,29 @@ namespace Assignment.BankAccount
             bool validationFailed = false;
 
             string name = nameTextBox.Text;
-            string sortCode = sortCodeTextBox.Text;
+            string sortCode = sortCodeTextBox.Text.Replace("-","");
             string accountNumber = accountNumberTextBox.Text;
             string nameOnAccount = nameOnAccountTextBox.Text;
 
-            if(!decimal.TryParse(overdraftTextBox.Text, out decimal overdraft))
+            // Validate decimal.
+            if(!decimal.TryParse(overdraftTextBox.Text, out decimal overdraft) || overdraft % 50 != 0 || overdraft < 0)
             {
                 overdraftTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
+
+            // Validate strings.
             if (!CheckInput(name))
             {
                 nameTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
-            if (!CheckInput(sortCode))
+            if (!CheckInput(sortCode) || sortCode.Length != 6 || !int.TryParse(sortCode,out _))
             {
                 sortCodeTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
-            if (!CheckInput(accountNumber))
+            if (!CheckInput(accountNumber) || accountNumber.Length != 8 || !int.TryParse(accountNumber, out _))
             {
                 accountNumberTextBox.BackColor = Color.Red;
                 validationFailed = true;
@@ -61,6 +71,7 @@ namespace Assignment.BankAccount
 
             if (!validationFailed)
             {
+                // Save validated details to properties.
                 BankAccount.Name = name;
                 BankAccount.SortCode = sortCode;
                 BankAccount.AccountNumber = accountNumber;
@@ -70,13 +81,21 @@ namespace Assignment.BankAccount
             }
         }
 
+        /// <summary>
+        /// Closes form without saving details.
+        /// </summary>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
+        /// <summary>
+        /// Populate the text boxes when form is loaded.
+        /// </summary>
         private void NewBankAccountCard_Load(object sender, EventArgs e)
-        {
+        {            
+            // Populate the text boxes with details if the
+            // passed bank account info card isn't null.
             if (BankAccount.Name != null)
             {
                 nameTextBox.Text = BankAccount.Name.ToString();
@@ -87,6 +106,11 @@ namespace Assignment.BankAccount
             }
         }
 
+        /// <summary>
+        /// Checks if input is empty or contains |.
+        /// </summary>
+        /// <param name="input">String to be checked.</param>
+        /// <returns>If the string was empty or contained |.</returns>
         private bool CheckInput(string input)
         {
             if (input == "")

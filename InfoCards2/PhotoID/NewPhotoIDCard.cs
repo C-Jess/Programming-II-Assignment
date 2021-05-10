@@ -13,14 +13,21 @@ namespace Assignment.PhotoID
 {
     public partial class NewPhotoIDCard : Form
     {
+        /// <summary>
+        /// Photo ID info card to store details from form.
+        /// </summary>
         public PhotoIDCard PhotoID { get; set; }
         public NewPhotoIDCard()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Validate and save details inputted in form.
+        /// </summary>
         private void saveButton_Click(object sender, EventArgs e)
         {
+            // Reset textbox colours.
             nameTextBox.BackColor = Color.White;
             titleComboBox.BackColor = Color.White;
             surnameTextBox.BackColor = Color.White;
@@ -38,6 +45,7 @@ namespace Assignment.PhotoID
             string address = addressRichTextBox.Text;
             Image photo = photoPictureBox.Image;
 
+            // Validate strings.
             if (!CheckInput(name))
             {
                 nameTextBox.BackColor = Color.Red;
@@ -64,6 +72,7 @@ namespace Assignment.PhotoID
                 addressRichTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
+            //Check if an image has been uploaded.
             if(photo == null)
             {
                 MessageBox.Show("Please upload a photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -72,6 +81,7 @@ namespace Assignment.PhotoID
 
             if (!validationFailed)
             {
+                // Save validated details to properties.
                 PhotoID.Name = name;
                 PhotoID.Title = title;
                 PhotoID.Surname = surname;
@@ -83,19 +93,28 @@ namespace Assignment.PhotoID
             }
         }
 
+        /// <summary>
+        /// Closes form without saving details.
+        /// </summary>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
+        /// <summary>
+        /// Open a file dialog for the user to select their photo.
+        /// </summary>
         private void uploadPhotoButton_Click(object sender, EventArgs e)
         {
             try
             {
+                // Open file dialog.
                 OpenFileDialog dialog = new OpenFileDialog();
+                // Set filter so only jpgs and PNGs can be selected.
                 dialog.Filter = "jpg files(*.jpg)|*.jpg|png files(*.png)|*.png";
                 if(dialog.ShowDialog() == DialogResult.OK)
                 {
+                    // Display image from file in picture box.
                     photoPictureBox.Image = Image.FromFile(dialog.FileName);
                 }
             }
@@ -105,11 +124,17 @@ namespace Assignment.PhotoID
             }
         }
 
+        /// <summary>
+        /// Populate the text boxes when form is loaded.
+        /// </summary>
         private void NewPhotoIDCard_Load(object sender, EventArgs e)
         {
             // Set the max date of the date time picker to today.
             dobDateTimePicker.MaxDate = DateTime.Today;
-            if(PhotoID.Name != null)
+
+            // Populate the text boxes with details if the
+            // passed photo ID info card isn't null.
+            if (PhotoID.Name != null)
             {
                 nameTextBox.Text = PhotoID.Name;
                 titleComboBox.Text = PhotoID.Title;
@@ -121,6 +146,11 @@ namespace Assignment.PhotoID
             }
         }
 
+        /// <summary>
+        /// Checks if input is empty or contains |.
+        /// </summary>
+        /// <param name="input">String to be checked.</param>
+        /// <returns>If the string was empty or contained |.</returns>
         private bool CheckInput(string input)
         {
             if (input == "")

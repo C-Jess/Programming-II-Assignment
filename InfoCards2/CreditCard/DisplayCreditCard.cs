@@ -12,13 +12,23 @@ namespace Assignment.CreditCard
 {
     public partial class DisplayCreditCard : Form
     {
+        /// <summary>
+        /// Credit card info card to store details from class.
+        /// </summary>
         private CreditCardCard creditCard;
+        /// <summary>
+        /// A form to display credit card info card details.
+        /// </summary>
+        /// <param name="creditCardCard">Credit card info card to get details from.</param>
         public DisplayCreditCard(CreditCardCard creditCardCard)
         {
             creditCard = creditCardCard;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Populates the labels with the credit card details.
+        /// </summary>
         private void DisplayCreditCard_Load(object sender, EventArgs e)
         {
             nameLabel.Text = creditCard.Name.ToString();
