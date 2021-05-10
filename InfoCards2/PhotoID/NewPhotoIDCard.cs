@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Assignment.PhotoID
 {
@@ -20,7 +21,15 @@ namespace Assignment.PhotoID
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            nameTextBox.BackColor = Color.White;
+            titleComboBox.BackColor = Color.White;
+            surnameTextBox.BackColor = Color.White;
+            givenNamesTextBox.BackColor = Color.White;
+            dobDateTimePicker.BackColor = Color.White;
+            addressRichTextBox.BackColor = Color.White;
+
             bool validationFailed = false;
+
             string name = nameTextBox.Text;
             string title = titleComboBox.Text;
             string surname = surnameTextBox.Text;
@@ -28,6 +37,38 @@ namespace Assignment.PhotoID
             DateTime dob = dobDateTimePicker.Value;
             string address = addressRichTextBox.Text;
             Image photo = photoPictureBox.Image;
+
+            if (!CheckInput(name))
+            {
+                nameTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            Regex r = new Regex("^[a-zA-Z-]*$");
+            if (!CheckInput(title)||!r.IsMatch(title))
+            {
+                titleComboBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(surname))
+            {
+                surnameTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(givenNames))
+            {
+                givenNamesTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(address))
+            {
+                addressRichTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if(photo == null)
+            {
+                MessageBox.Show("Please upload a photo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validationFailed = true;
+            }
 
             if (!validationFailed)
             {
@@ -66,6 +107,8 @@ namespace Assignment.PhotoID
 
         private void NewPhotoIDCard_Load(object sender, EventArgs e)
         {
+            // Set the max date of the date time picker to today.
+            dobDateTimePicker.MaxDate = DateTime.Today;
             if(PhotoID.Name != null)
             {
                 nameTextBox.Text = PhotoID.Name;
@@ -75,6 +118,22 @@ namespace Assignment.PhotoID
                 dobDateTimePicker.Value = PhotoID.DOB;
                 addressRichTextBox.Text = PhotoID.Address;
                 photoPictureBox.Image = PhotoID.Photo;
+            }
+        }
+
+        private bool CheckInput(string input)
+        {
+            if (input == "")
+            {
+                return false;
+            }
+            else if (input.Contains("|"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

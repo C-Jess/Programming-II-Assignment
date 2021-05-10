@@ -20,6 +20,12 @@ namespace Assignment.BankAccount
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            overdraftTextBox.BackColor = Color.White;
+            nameTextBox.BackColor = Color.White;
+            sortCodeTextBox.BackColor = Color.White;
+            accountNumberTextBox.BackColor = Color.White;
+            nameOnAccountTextBox.BackColor = Color.White;
+
             bool validationFailed = false;
 
             string name = nameTextBox.Text;
@@ -29,6 +35,27 @@ namespace Assignment.BankAccount
 
             if(!decimal.TryParse(overdraftTextBox.Text, out decimal overdraft))
             {
+                overdraftTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(name))
+            {
+                nameTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(sortCode))
+            {
+                sortCodeTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(accountNumber))
+            {
+                accountNumberTextBox.BackColor = Color.Red;
+                validationFailed = true;
+            }
+            if (!CheckInput(nameOnAccount))
+            {
+                nameOnAccountTextBox.BackColor = Color.Red;
                 validationFailed = true;
             }
 
@@ -57,6 +84,22 @@ namespace Assignment.BankAccount
                 accountNumberTextBox.Text = BankAccount.AccountNumber.ToString();
                 nameOnAccountTextBox.Text = BankAccount.NameOnAccount.ToString();
                 overdraftTextBox.Text = BankAccount.Overdraft.ToString();
+            }
+        }
+
+        private bool CheckInput(string input)
+        {
+            if (input == "")
+            {
+                return false;
+            }
+            else if (input.Contains("|"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
