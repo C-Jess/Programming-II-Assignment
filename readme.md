@@ -4,7 +4,7 @@ I was tasked to create plugin modules for a provided code base. The plugin modul
 All the plugin modules I wrote are in InfoCards2, the rest of the code was provided.
 
 ## Technologies
-The code is written in C# using classes and interfaces.
+The code is written in C# using classes, interfaces and forms.
 
 ## Setup
 To run this project:
