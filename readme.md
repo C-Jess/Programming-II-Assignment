@@ -10,8 +10,8 @@ The code is written in C# using classes, interfaces and forms.
 To run this project:
 * Download code base
 * Open solution file in visual studio
-* Build all parts
-* Run
+* Build Solution
+* Start
 
 ## Specification
 The specification for the project can be found [here](../master/Programming%20II%20Assignment%20Specification.pdf).
