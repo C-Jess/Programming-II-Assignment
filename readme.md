@@ -1,6 +1,8 @@
 ## Introduction
 This project was created for my first year programming II assignment.
-I was tasked to create plugin modules for a provided code base as set out by the specification. The plugin modules expand the functionality of the original program by adding different card types which are stored and retrived.
+
+I was tasked to create plugin modules for a provided code base as set out by the specification. The plugin modules expand the functionality of the original program by adding different card types which are stored and retrieved.
+
 All the plugin modules I wrote are in InfoCards2, the rest of the code was provided.
 
 ## Technologies
