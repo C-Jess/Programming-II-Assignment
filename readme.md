@@ -10,7 +10,6 @@ The code is written in C# using classes, interfaces and forms.
 
 ## Setup
 To run this project:
-* Download code base
 * Open solution file in visual studio
 * Build Solution
 * Start
